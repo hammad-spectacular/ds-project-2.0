@@ -20,7 +20,8 @@ public:
     }
 
     void display() {
-        cout << "ID: " << id << " | Name: " << name << " | Balance: " << balance << endl;
+   cout << "ID: " << id << " | Name: " << name 
+     << " | Balance: " << fixed << setprecision(2) << balance << endl;// using the library over here to get the output 
     }
 };
 struct StackNode {
