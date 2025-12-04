@@ -1,12 +1,12 @@
 #include <iostream>
 #include <string>
+#include<iomain>// this would help getting the large values in a way caz the large  values are not shown properly
 using namespace std;
 class Account {
 public:
     int id;
     string name;
     double balance;
-
     Account() {
         id = 0;
         name = "";
@@ -23,10 +23,6 @@ public:
         cout << "ID: " << id << " | Name: " << name << " | Balance: " << balance << endl;
     }
 };
-
-// -----------------------------
-// STACK for Transactions
-// -----------------------------
 struct StackNode {
     string action;
     StackNode* next;
@@ -88,10 +84,6 @@ Account* searchBST(BSTNode* root, int id) {
     if (id < root->data.id) return searchBST(root->left, id);
     else return searchBST(root->right, id);
 }
-
-// -----------------------------
-// SORTING USING ARRAY (BUBBLE SORT)
-// -----------------------------
 void bubbleSort(Account arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
         for (int j = 0; j < n - i - 1; j++) {
@@ -103,10 +95,10 @@ void bubbleSort(Account arr[], int n) {
         }
     }
 }
-Node* head = NULL;        // Linked List
-DNode* dhead = NULL;      // Doubly Linked List
-BSTNode* bstRoot = NULL;  // BST
-TransactionStack stack;   // Stack
+Node* head = NULL;        
+DNode* dhead = NULL;      
+BSTNode* bstRoot = NULL;  
+TransactionStack stack;   
 Account arr[100];         
 int arrCount = 0;
 
@@ -114,7 +106,7 @@ void createAccount() {
     int id;
     string name;
     double bal;
-    bal=0;// giving it some value caz if not then it would take garbage value
+    bal=0;// giving it some value caz if not then it would take garbage value and it did not helped so had to use a new library
 
     cout << "Enter ID: ";
     cin >> id;
@@ -124,19 +116,14 @@ void createAccount() {
 
     cout << "Enter Balance: ";
     cin >> bal;
-
     Account a(id, name, bal);
-
-    // Add to Array
     arr[arrCount++] = a;
 
-    // Add to Linked List
     Node* n = new Node();
     n->data = a;
     n->next = head;
     head = n;
 
-    // Add to Doubly Linked List
     DNode* dn = new DNode();
     dn->data = a;
     dn->next = dhead;
@@ -144,13 +131,13 @@ void createAccount() {
     if (dhead != NULL) dhead->prev = dn;
     dhead = dn;
 
-    // Add to BST
+
     bstRoot = insertBST(bstRoot, a);
 
     cout << "Account Created Successfully!\n";
 }
 
-// -----------------------------
+
 void deposit() {
     int id;
     double amt;
@@ -171,7 +158,6 @@ void deposit() {
     cout << "Deposit Successful.\n";
 }
 
-// -----------------------------
 void withdraw() {
     int id;
     double amt;
@@ -197,7 +183,6 @@ void withdraw() {
     cout << "Withdrawal Successful.\n";
 }
 
-// -----------------------------
 void displayAccounts() {
     cout << "\n--- Accounts (Doubly Linked List Forward Traversal) ---\n";
     DNode* temp = dhead;
@@ -207,13 +192,13 @@ void displayAccounts() {
     }
 }
 
-// -----------------------------
+
 void sortAccounts() {
     bubbleSort(arr, arrCount);
     cout << "Accounts Sorted by ID.\n";
 }
 
-// -----------------------------
+
 void menu() {
     int choice;
 
