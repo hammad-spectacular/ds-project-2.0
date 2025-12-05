@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include<iomain>// this would help getting the large values in a way caz the large  values are not shown properly
+#include<iomanip>// this would help getting the large values in a way caz the large  values are not shown properly
 using namespace std;
 class Account {
 public:
