@@ -107,7 +107,8 @@ void createAccount() {
     int id;
     string name;
     double bal;
-    bal=0;// giving it some value caz if not then it would take garbage value
+    bal=0;// giving it some value caz if not then it would take garbage value 
+
     cout << "Enter ID: ";
     cin >> id;
     cout << "Enter Name: ";
@@ -152,6 +153,29 @@ void deposit() {
 
     cout << "Enter Amount: ";
     cin >> amt;
+     for (int i = 0; i < arrCount; i++) {
+        if (arr[i].id == id) {
+            arr[i].balance = a->balance;
+            break;
+        }
+    }
+
+    Node* t = head;
+    while (t != NULL) {
+        if (t->data.id == id) {
+            t->data.balance = a->balance;
+            break;
+        }
+        t = t->next;
+    }
+    DNode* d = dhead;
+    while (d != NULL) {
+        if (d->data.id == id) {
+            d->data.balance = a->balance;
+            break;
+        }
+        d = d->next;
+    }
 
     a->balance += amt;
     stack.push("Deposited " + to_string(amt) + " into ID " + to_string(id));
