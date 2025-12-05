@@ -107,8 +107,7 @@ void createAccount() {
     int id;
     string name;
     double bal;
-    bal=0;// giving it some value caz if not then it would take garbage value and it did not helped so had to use a new library
-
+    bal=0;// giving it some value caz if not then it would take garbage value
     cout << "Enter ID: ";
     cin >> id;
     cout << "Enter Name: ";
