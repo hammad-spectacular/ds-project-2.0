@@ -185,6 +185,7 @@ void deposit() {
 void withdraw() {
     int id;
     double amt;
+   
     cout << "Enter ID: ";
     cin >> id;
 
@@ -208,6 +209,10 @@ void withdraw() {
 }
 
 void displayAccounts() {
+    if(dhead==NULL){
+        cout<<" there is no account "<<endl;
+        return;
+    }
     cout << "\n--- Accounts (Doubly Linked List Forward Traversal) ---\n";
     DNode* temp = dhead;
     while (temp != NULL) {
