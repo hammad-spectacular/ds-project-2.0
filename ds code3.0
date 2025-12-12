@@ -2,7 +2,6 @@
 #include <string>
 #include <iomanip> // for formatting large values
 using namespace std;
-
 class Account {
 public:
     int id;
@@ -107,6 +106,14 @@ BSTNode* bstRoot = NULL;
 TransactionStack stack;   
 Account arr[100];         
 int arrCount = 0;
+void sortAccounts() {
+    bubbleSort(arr, arrCount);
+    cout << "\n--- Accounts Sorted by ID ---\n";
+    for (int i = 0; i < arrCount; i++) {
+        arr[i].display();
+    }
+}
+
 
 void createAccount() {
     int id;
@@ -158,16 +165,12 @@ void deposit() {
     cin >> amt;
 
     a->balance += amt; // update first
-
-    // update array
     for (int i = 0; i < arrCount; i++) {
         if (arr[i].id == id) {
             arr[i].balance = a->balance;
             break;
         }
     }
-
-    // update singly linked list
     Node* t = head;
     while (t != NULL) {
         if (t->data.id == id) {
@@ -258,7 +261,7 @@ void displayAccounts() {
     }
 }
 
-void sortAccounts() {
+void sortAccounts1() {
     bubbleSort(arr, arrCount);
     cout << "Accounts Sorted by ID.\n";
 }
@@ -271,9 +274,11 @@ void menu() {
         cout << "2. Deposit\n";
         cout << "3. Withdraw\n";
         cout << "4. Display Accounts\n";
-        cout << "5. Sort Accounts by ID\n";
+        cout << "5.for  Sortion Accounts by ID\n";
         cout << "6. Show Transactions\n";
-        cout << "7. Exit\n";
+        cout<<"7.for display of stack\n";
+        cout<<"8.for sorted code\n ";
+        cout << "9. Exit\n";
         cout << "Enter choice: ";
         cin >> choice;
 
@@ -282,9 +287,11 @@ void menu() {
             case 2: deposit(); break;
             case 3: withdraw(); break;
             case 4: displayAccounts(); break;
-            case 5: sortAccounts(); break;
+            case 5: sortAccounts1(); break;
             case 6: stack.show(); break;
-            case 7: return;
+            case 7: stack.show(); break;
+            case 8: sortAccounts();break;
+            case 9:return;
             default: cout << "Invalid Choice.\n";
         }
     }
@@ -294,4 +301,3 @@ int main() {
     menu();
     return 0;
 }
-
